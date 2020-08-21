@@ -11,4 +11,9 @@ ITTERATIONS AND REVISIONS:
 	In the process of writing CompleteSystem I had to test the ASCII value of all the characters so I can easily use letters for bases larger than 10. However, changed from using the ASCII value to finding the character's location in a static array
 
 AVAILABLE CHARACTER ARRAY:
-char[] CHARCTERS={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}; *can be modified in the code to accomodate more bases by using special characters
+char[] CHARCTERS={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}; *can be modified in the code to accomodate more bases by using special characters 
+
+
+
+BADGES:
+[![Run on Repl.it](https://repl.it/badge/github/WhoDis-MaName/Number-sytem-converter)](https://repl.it/github/WhoDis-MaName/Number-sytem-converter)
