@@ -10,6 +10,18 @@ import java.lang.Math;
 
 public class FullSystem {
     // instance variables - replace the example below with your own
+    private static int exp(int base, int power) {
+        if (power <= 0) {
+            return 1;
+        } else {
+            int answer = base;
+            for (int i = 0; i < power - 1; i++) {
+                answer = answer * base;
+            }
+            return answer;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int INTEGER_MAX = Integer.MAX_VALUE;
@@ -24,16 +36,22 @@ public class FullSystem {
             testForType = input.next();
 
             for (int i = 0; i < testForType.length(); i++) {
+                // System.out.println(testForType.charAt(i));
                 if (!Character.isDigit(testForType.charAt(i))) {
                     onlyNumbers = false;
                 }
             }
-            if (onlyNumbers) {
-                System.out.println("Yo dumb ass don't use letters");
+            if (!onlyNumbers) {
+                System.out.println("Please only use digits (0-9). Avoid letters and special characters.");
             } else {
                 int temp = 0;
                 for (int i = testForType.length() - 1; i >= 0; i--) {
+                    for (int j = 0; j < CHARCTERS.length; j++) {
+                        if (CHARCTERS[j] == testForType.charAt(i)) {
+                            temp += j * exp(10, (testForType.length() - (i + 1)));
+                        }
 
+                    }
                 }
                 baseStart = temp;
             }
@@ -108,12 +126,33 @@ public class FullSystem {
         }
         if (foundAll && converted < Integer.MAX_VALUE) {
             System.out
-                    .println(convertable + " in baseStart " + baseStart + " = " + converted + " in base 10 numbering.");
+                    .println(convertable + " in base " + baseStart + " = " + converted + " in base 10 numbering.");
 
             int base = 0;
             while (base > CHARCTERS.length || base < 1) {
                 System.out.println("What do you want your number to be turned to?(1-" + CHARCTERS.length + ")");
-                base = input.nextInt();
+                testForType = input.next();
+
+                for (int i = 0; i < testForType.length(); i++) {
+                    // System.out.println(testForType.charAt(i));
+                    if (!Character.isDigit(testForType.charAt(i))) {
+                        onlyNumbers = false;
+                    }
+                }
+                if (!onlyNumbers) {
+                    System.out.println("Please only use digits (0-9). Avoid letters and special characters.");
+                } else {
+                    int temp = 0;
+                    for (int i = testForType.length() - 1; i >= 0; i--) {
+                        for (int j = 0; j < CHARCTERS.length; j++) {
+                            if (CHARCTERS[j] == testForType.charAt(i)) {
+                                temp += j * exp(10, (testForType.length() - (i + 1)));
+                            }
+
+                        }
+                    }
+                    base = temp;
+                }
             }
             /*
              * int converted = 0;
@@ -135,7 +174,7 @@ public class FullSystem {
                     converted = converted / base;
                 }
 
-                System.out.println(number + " in baseStart " + baseStart + " = " + convertable + " in base " + base
+                System.out.println(number + " in base " + baseStart + " = " + convertable + " in base " + base
                         + " numbering.");
             }
 

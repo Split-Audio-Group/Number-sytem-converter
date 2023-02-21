@@ -90,7 +90,7 @@ public class CompleteSystem {
             if (foundAll) {
                 System.out.println(convertable + " in base " + base + " = " + converted + " in base 10 numbering.");
             } else {
-                System.out.println("Incomplete calculation for reasons stated above.5");
+                System.out.println("Incomplete calculation for reasons stated above.");
             }
         }
 
