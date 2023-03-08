@@ -8,6 +8,7 @@ PURPOSE OF PROJECT: Gain experience in java by making a number converter
 HOW TO START THIS PROJECT: Run this code in a Java compiler and follow the instructions as it prompts you.
 
 AUTHORS: Andra Dartarian Jorden Williams 
+
 ITTERATIONS AND REVISIONS: 
 	At one point, the file called CompleteSystem only converted any base to base 10, then I created ReverseFullSystem to turn base 10 to whatever base you wanted. Once I finished ReverseFullSystem I combined them into FullSystem to allow conversion to and from any base with base 10 being the conversion point. 
 	In the process of writing CompleteSystem I had to test the ASCII value of all the characters so I can easily use letters for bases larger than 10. However, changed from using the ASCII value to finding the character's location in a static array
