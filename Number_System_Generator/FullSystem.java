@@ -6,6 +6,7 @@
  * @version (a version number or a date)
  */
 import java.util.Scanner;
+
 import java.lang.Math;
 
 public class FullSystem {
@@ -26,12 +27,14 @@ public class FullSystem {
         Scanner input = new Scanner(System.in);
         int INTEGER_MAX = Integer.MAX_VALUE;
         char[] CHARCTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-                'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+                'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!',
+                '@', '#', '$', '%', '^', '&', '*' };
         int baseStart = 0;
         String testForType = "";
         boolean onlyNumbers = true;
 
         while (baseStart > CHARCTERS.length || baseStart < 1) {
+            onlyNumbers = true;
             System.out.println("What do you want your starting base to be?(1-" + CHARCTERS.length + ")");
             testForType = input.next();
 
@@ -130,6 +133,7 @@ public class FullSystem {
 
             int base = 0;
             while (base > CHARCTERS.length || base < 1) {
+                onlyNumbers = true;
                 System.out.println("What do you want your number to be turned to?(1-" + CHARCTERS.length + ")");
                 testForType = input.next();
 
@@ -174,8 +178,8 @@ public class FullSystem {
                     converted = converted / base;
                 }
 
-                System.out.println(number + " in base " + baseStart + " = " + convertable + " in base " + base
-                        + " numbering.");
+                System.out.println(
+                        number + " in base " + baseStart + " = " + convertable + " in base " + base + " numbering.");
             }
 
         } else {

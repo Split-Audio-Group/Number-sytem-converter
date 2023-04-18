@@ -14,7 +14,8 @@ public class CompleteSystem {
         int INTEGER_MAX = Integer.MAX_VALUE;
         try (Scanner input = new Scanner(System.in)) {
             char[] CHARCTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-                    'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+                    'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!',
+                    '@', '#', '$', '%', '^', '&', '*' };
             int base = 0;
 
             while (base > CHARCTERS.length || base < 1) {
