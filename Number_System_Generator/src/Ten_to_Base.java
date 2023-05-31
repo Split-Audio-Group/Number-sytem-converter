@@ -1,3 +1,4 @@
+package src;
 
 /**
  * Write a description of class ReverseFullSystem here.
@@ -8,7 +9,7 @@
 import java.util.Scanner;
 //import java.lang.Math;
 
-public class ReverseFullSystem {
+public class Ten_to_Base {
     // instance variables - replace the example below with your own
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

@@ -1,3 +1,4 @@
+package src;
 
 /**
  * Write a description of class FullSystem here.
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 import java.lang.Math;
 
-public class FullSystem {
+public class Base_to_Ten {
     // instance variables - replace the example below with your own
     private static int exp(int base, int power) {
         if (power <= 0) {
