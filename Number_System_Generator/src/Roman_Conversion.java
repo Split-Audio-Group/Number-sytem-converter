@@ -80,30 +80,62 @@ public class Roman_Conversion {
         return returnString;
     }
 
-    public static void main(String[] args) {
-        System.out.println(romanToDecimal("XIX"));
-        System.out.println(romanToDecimal("CXCII"));
-        System.out.println(romanToDecimal("CXCIX"));
-        System.out.println(romanToDecimal("MCXLVIII"));
-        System.out.println(romanToDecimal("CMLXXXIII"));
-        System.out.println(romanToDecimal("I"));
-        System.out.println(romanToDecimal("V"));
-        System.out.println(romanToDecimal("XXIII"));
-        System.out.println(romanToDecimal("MMXXIII"));
-        System.out.println(romanToDecimal("MCMXCII"));
-        System.out.println(romanToDecimal("CMXXVII"));
+    public static String optimizeRoman(String number) {
+        return decimalToRoman(romanToDecimal(number));
+    }
 
-        System.out.println(decimalToRoman(19));
-        System.out.println(decimalToRoman(192));
-        System.out.println(decimalToRoman(199));
-        System.out.println(decimalToRoman(1148));
-        System.out.println(decimalToRoman(983));
-        System.out.println(decimalToRoman(1));
-        System.out.println(decimalToRoman(5));
-        System.out.println(decimalToRoman(23));
-        System.out.println(decimalToRoman(2023));
-        System.out.println(decimalToRoman(1992));
-        System.out.println(decimalToRoman(927));
+    public static boolean validRoman(String number) {
+        return (romanToDecimal(number) > 0 && romanToDecimal(number) < 3999);
+    }
+
+    private static String generateBadRoman(int length) {
+        String returnString = "";
+        boolean valid = false;
+        while (!valid) {
+            returnString = "";
+            for (int i = 0; i < length; i++) {
+                returnString = returnString + ROMAN_DICTIONARY[(int) (Math.random() * ROMAN_DICTIONARY.length)];
+            }
+            valid = validRoman(returnString);
+        }
+        return returnString;
+    }
+
+    public static void main(String[] args) {
+        /*
+         * System.out.println(romanToDecimal("XIX"));
+         * System.out.println(romanToDecimal("CXCII"));
+         * System.out.println(romanToDecimal("CXCIX"));
+         * System.out.println(romanToDecimal("MCXLVIII"));
+         * System.out.println(romanToDecimal("CMLXXXIII"));
+         * System.out.println(romanToDecimal("I"));
+         * System.out.println(romanToDecimal("V"));
+         * System.out.println(romanToDecimal("XXIII"));
+         * System.out.println(romanToDecimal("MMXXIII"));
+         * System.out.println(romanToDecimal("MCMXCII"));
+         * System.out.println(romanToDecimal("CMXXVII"));
+         * 
+         * System.out.println(decimalToRoman(19));
+         * System.out.println(decimalToRoman(192));
+         * System.out.println(decimalToRoman(199));
+         * System.out.println(decimalToRoman(1148));
+         * System.out.println(decimalToRoman(983));
+         * System.out.println(decimalToRoman(1));
+         * System.out.println(decimalToRoman(5));
+         * System.out.println(decimalToRoman(23));
+         * System.out.println(decimalToRoman(2023));
+         * System.out.println(decimalToRoman(1992));
+         * System.out.println(decimalToRoman(927));
+         */
+
+        for (int i = 1; i <= 200; i++) {
+            String test = "";
+            System.out.println("Random Roman " + i + ":");
+            test = generateBadRoman(20);
+            System.out.println("\tGenerated Roman Numeral: " + test + " = " + romanToDecimal(test));
+            test = optimizeRoman(test);
+            System.out.println("\tOptimized Roman Numeral: " + test + " = " + romanToDecimal(test));
+        }
     }
 
     /**

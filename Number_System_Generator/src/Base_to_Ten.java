@@ -1,65 +1,17 @@
 package src;
 
-/**
- * Write a description of class FullSystem here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 import java.util.Scanner;
 
 import java.lang.Math;
 
 public class Base_to_Ten {
-    // instance variables - replace the example below with your own
-    private static int exp(int base, int power) {
-        if (power <= 0) {
-            return 1;
-        } else {
-            int answer = base;
-            for (int i = 0; i < power - 1; i++) {
-                answer = answer * base;
-            }
-            return answer;
-        }
-    }
 
-    public static void main(String[] args) {
+    public static int baseToTen() {
         Scanner input = new Scanner(System.in);
         int INTEGER_MAX = Integer.MAX_VALUE;
-        char[] CHARCTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-                'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '!',
-                '@', '#', '$', '%', '^', '&', '*' };
-        int baseStart = 0;
-        String testForType = "";
-        boolean onlyNumbers = true;
+        char[] CHARCTERS = Base_to_Base.CHARCTERS;
 
-        while (baseStart > CHARCTERS.length || baseStart < 1) {
-            onlyNumbers = true;
-            System.out.println("What do you want your starting base to be?(1-" + CHARCTERS.length + ")");
-            testForType = input.next();
-
-            for (int i = 0; i < testForType.length(); i++) {
-                // System.out.println(testForType.charAt(i));
-                if (!Character.isDigit(testForType.charAt(i))) {
-                    onlyNumbers = false;
-                }
-            }
-            if (!onlyNumbers) {
-                System.out.println("Please only use digits (0-9). Avoid letters and special characters.");
-            } else {
-                int temp = 0;
-                for (int i = testForType.length() - 1; i >= 0; i--) {
-                    for (int j = 0; j < CHARCTERS.length; j++) {
-                        if (CHARCTERS[j] == testForType.charAt(i)) {
-                            temp += j * exp(10, (testForType.length() - (i + 1)));
-                        }
-
-                    }
-                }
-                baseStart = temp;
-            }
-        }
+        int base = Base_to_Base.getBase(input);
         int converted = 0;
         boolean foundChar = false;
         int value = 0;
@@ -67,7 +19,7 @@ public class Base_to_Ten {
         String number;
         String convertable;
 
-        if (baseStart == 1) {
+        if (base == 1) {
             System.out.println("Write a number using the digits 1:");
             number = input.next();
             converted = 0;
@@ -85,18 +37,18 @@ public class Base_to_Ten {
                     foundAll = false;
                 } else {
                     int maxDist = INTEGER_MAX - converted;
-                    if (maxDist <= ((int) Math.pow((double) baseStart, (double) i) * value)) {
+                    if (maxDist <= ((int) Math.pow((double) base, (double) i) * value)) {
                         System.out.println("Larger than max integer value.");
                         foundAll = false;
                         break;
                     }
-                    converted += ((int) Math.pow((double) baseStart, (double) i) * value);
+                    converted += ((int) Math.pow((double) base, (double) i) * value);
                 }
             }
 
         } else {
             System.out.print("Write a number using the digits 0");
-            for (int i = 1; i < baseStart; i++) {
+            for (int i = 1; i < base; i++) {
                 System.out.print(", " + CHARCTERS[i]);
             }
             System.out.println(":");
@@ -109,7 +61,7 @@ public class Base_to_Ten {
             // conversion function
             for (int i = 0; i < convertable.length(); i++) {
                 foundChar = false;
-                for (int c = 0; c < baseStart; c++) {
+                for (int c = 0; c < base; c++) {
                     if (convertable.charAt(i) == CHARCTERS[c]) {
                         value = c;
                         foundChar = true;
@@ -120,7 +72,7 @@ public class Base_to_Ten {
                             "The number " + convertable.charAt(i) + " at " + i + " not found in available digits");
                     foundAll = false;
                 } else {
-                    converted += ((int) Math.pow((double) baseStart, (double) i) * value);
+                    converted += ((int) Math.pow((double) base, (double) i) * value);
                 }
 
             }
@@ -130,63 +82,17 @@ public class Base_to_Ten {
         }
         if (foundAll && converted < Integer.MAX_VALUE) {
             System.out
-                    .println(convertable + " in base " + baseStart + " = " + converted + " in base 10 numbering.");
-
-            int base = 0;
-            while (base > CHARCTERS.length || base < 1) {
-                onlyNumbers = true;
-                System.out.println("What do you want your number to be turned to?(1-" + CHARCTERS.length + ")");
-                testForType = input.next();
-
-                for (int i = 0; i < testForType.length(); i++) {
-                    // System.out.println(testForType.charAt(i));
-                    if (!Character.isDigit(testForType.charAt(i))) {
-                        onlyNumbers = false;
-                    }
-                }
-                if (!onlyNumbers) {
-                    System.out.println("Please only use digits (0-9). Avoid letters and special characters.");
-                } else {
-                    int temp = 0;
-                    for (int i = testForType.length() - 1; i >= 0; i--) {
-                        for (int j = 0; j < CHARCTERS.length; j++) {
-                            if (CHARCTERS[j] == testForType.charAt(i)) {
-                                temp += j * exp(10, (testForType.length() - (i + 1)));
-                            }
-
-                        }
-                    }
-                    base = temp;
-                }
-            }
-            /*
-             * int converted = 0;
-             * boolean foundChar = false;
-             * int value = 0;
-             * boolean foundAll = true;
-             * String convertable;
-             */
-
-            convertable = "";
-            if (base == 1) {
-                for (int i = 0; i < converted; i++) {
-                    convertable = "1" + convertable;
-                }
-            } else {
-                while (converted > 0) {
-                    int digit = converted % base; // rightmost digit
-                    convertable = CHARCTERS[digit] + convertable; // string concatenation
-                    converted = converted / base;
-                }
-
-                System.out.println(
-                        number + " in base " + baseStart + " = " + convertable + " in base " + base + " numbering.");
-            }
-
+                    .println(convertable + " in base " + base + " = " + converted + " in base 10 numbering.");
+            input.close();
+            return converted;
         } else {
             System.out.println("This number has error(s) listed above.");
+            input.close();
+            return -1;
         }
+    }
 
-        input.close();
+    public static void main(String[] args) {
+        baseToTen();
     }
 }

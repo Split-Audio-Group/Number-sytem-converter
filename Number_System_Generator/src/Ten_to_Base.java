@@ -11,34 +11,37 @@ import java.util.Scanner;
 
 public class Ten_to_Base {
     // instance variables - replace the example below with your own
-    public static void main(String[] args) {
+    public static void tenToBase() {
         Scanner input = new Scanner(System.in);
-
-        char[] CHARCTERS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-                'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-        int base = 0;
-
-        while (base > CHARCTERS.length || base < 1) {
-            System.out.println("What do you want your base to be?(1-" + CHARCTERS.length + ")");
-            base = input.nextInt();
-        }
-        int converted = 0;
-        // boolean foundChar = false;
-        // int value = 0;
-        // boolean foundAll = true;
+        int base = Base_to_Base.getBase(input);
+        int converted = -1;
         String convertable;
 
-        System.out.println("What integer do you want converted to base " + base + "?");
-        converted = input.nextInt();
+        while (converted < 0 || converted > Integer.MAX_VALUE) {
+            System.out.println("What integer do you want converted to base " + base + "?");
+            converted = Base_to_Base.toIntegerCheck(input.next());
+        }
+        convertable = tenToBase(converted, base);
+
+        System.out.print(convertable);
+        input.close();
+    }
+
+    public static String tenToBase(int converted, int base) {
+        String convertable;
+
         convertable = "";
 
         while (converted > 0) {
             int digit = converted % base; // rightmost digit
-            convertable = CHARCTERS[digit] + convertable; // string concatenation
+            convertable = Base_to_Base.CHARCTERS[digit] + convertable; // string concatenation
             converted = converted / base;
         }
 
-        System.out.print(convertable);
-        input.close();
+        return convertable;
+    }
+
+    public static void main(String[] args) {
+        tenToBase();
     }
 }
