@@ -1,16 +1,8 @@
 package src;
 
-/**
- * Write a description of class ReverseFullSystem here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 import java.util.Scanner;
-//import java.lang.Math;
 
 public class Ten_to_Base {
-    // instance variables - replace the example below with your own
     public static void tenToBase() {
         Scanner input = new Scanner(System.in);
         int base = Base_to_Base.getBase(input);

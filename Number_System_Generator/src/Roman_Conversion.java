@@ -1,7 +1,9 @@
 package src;
 
+import java.util.Arrays;
+
 public class Roman_Conversion {
-    private static char[] ROMAN_DICTIONARY = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
+    public static char[] ROMAN_DICTIONARY = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
     private static int[] ROMAN_VALUE = { 1, 5, 10, 50, 100, 500, 1000 };
 
     public static int romanToDecimal(String number) {
@@ -81,6 +83,11 @@ public class Roman_Conversion {
     }
 
     public static String optimizeRoman(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            if (!Arrays.asList(ROMAN_DICTIONARY).contains(number.charAt(i))) {
+                return "INVALID";
+            }
+        }
         return decimalToRoman(romanToDecimal(number));
     }
 
