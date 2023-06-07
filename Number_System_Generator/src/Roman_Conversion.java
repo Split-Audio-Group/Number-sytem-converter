@@ -83,12 +83,23 @@ public class Roman_Conversion {
     }
 
     public static String optimizeRoman(String number) {
+        boolean foundAll = true;
         for (int i = 0; i < number.length(); i++) {
-            if (!Arrays.asList(ROMAN_DICTIONARY).contains(number.charAt(i))) {
-                return "INVALID";
+            boolean foundChar = false;
+            for (int j = 0; j < ROMAN_DICTIONARY.length; j++) {
+                if (number.charAt(i) == ROMAN_DICTIONARY[j]) {
+                    foundChar = true;
+                    break;
+                }
+            }
+            if (!foundChar) {
+                foundAll = false;
             }
         }
-        return decimalToRoman(romanToDecimal(number));
+        if (foundAll) {
+            return decimalToRoman(romanToDecimal(number));
+        }
+        return "INVALID";
     }
 
     public static boolean validRoman(String number) {

@@ -45,7 +45,7 @@ public class Base_to_Base {
         try (Scanner input = new Scanner(System.in)) {
             int startBase = getBase(input);
             String number = Base_to_Ten.getNumber(startBase, input);
-            int startValue = Base_to_Ten.baseToTen(input);
+            int startValue = Base_to_Ten.baseToTen(number, startBase);
             int endBase = getBase(input);
             String result = Ten_to_Base.tenToBase(startValue, endBase);
             System.out
