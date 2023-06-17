@@ -20,14 +20,31 @@ public class Ten_to_Base {
     }
 
     public static String tenToBase(int converted, int base) {
-        String convertable;
+        String convertable = "";
 
-        convertable = "";
+        if (base == 0) {
 
-        while (converted > 0) {
-            int digit = converted % base; // rightmost digit
-            convertable = Base_to_Base.CHARCTERS[digit] + convertable; // string concatenation
-            converted = converted / base;
+            String largest_roman = "";
+            for (int i = Roman_Conversion.ROMAN_DICTIONARY.length - 1; i >= 0; i--) {
+                largest_roman = largest_roman + Roman_Conversion.ROMAN_DICTIONARY[i]
+                        + Roman_Conversion.ROMAN_DICTIONARY[i] + Roman_Conversion.ROMAN_DICTIONARY[i];
+            }
+            int roman_max = Roman_Conversion.romanToDecimal(largest_roman);
+
+            if (converted > roman_max) {
+                System.out.println("Number is larger than largest Roman Number");
+                return "INVALID";
+            }
+            convertable = Roman_Conversion.decimalToRoman(converted);
+            // System.out.println("Result: " + convertable);
+        } else {
+            // System.out.println("convert to base");
+            convertable = "";
+            while (converted > 0) {
+                int digit = converted % base; // rightmost digit
+                convertable = Base_to_Base.CHARCTERS[digit] + convertable; // string concatenation
+                converted = converted / base;
+            }
         }
 
         return convertable;

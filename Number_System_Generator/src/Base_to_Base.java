@@ -44,12 +44,21 @@ public class Base_to_Base {
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
             int startBase = getBase(input);
-            String number = Base_to_Ten.getNumber(startBase, input);
+            String number = "INVALID";
+            while (number.equals("INVALID")) {
+                number = Base_to_Ten.getNumber(startBase, input);
+            }
             int startValue = Base_to_Ten.baseToTen(number, startBase);
             int endBase = getBase(input);
             String result = Ten_to_Base.tenToBase(startValue, endBase);
-            System.out
-                    .println(number + " in base " + startBase + " = " + result + " in base " + endBase + " numbering.");
+            if (endBase == 0) {
+                System.out
+                        .println(number + " in base " + startBase + " = " + result + " in Roman Numeral numbering.");
+            } else {
+                System.out
+                        .println(number + " in base " + startBase + " = " + result + " in base " + endBase
+                                + " numbering.");
+            }
         }
 
     }

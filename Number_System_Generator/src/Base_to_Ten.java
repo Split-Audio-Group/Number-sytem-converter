@@ -74,9 +74,11 @@ public class Base_to_Ten {
     }
 
     public static int baseToTen(String number, int base) {
+        char[] CHARCTERS = Base_to_Base.CHARCTERS;
         int converted = 0;
         int value = 0;
         String convertable;
+        System.out.println(number);
 
         if (base == 0) {
             number = Roman_Conversion.optimizeRoman(number);
@@ -97,12 +99,20 @@ public class Base_to_Ten {
 
         } else {
             for (int i = 0; i < number.length(); i++) {
+                for (int j = 0; j < base; j++) {
+                    if (number.charAt(i) == CHARCTERS[j]) {
+                        value = j;
+                        break;
+                    }
+                }
                 int maxDist = Integer.MAX_VALUE - converted;
                 if (maxDist <= ((int) Math.pow((double) base, (double) i) * value)) {
                     converted = Integer.MAX_VALUE;
+
                     break;
                 }
                 converted += ((int) Math.pow((double) base, (double) i) * value);
+                // System.out.println("Converted = " + converted);
             }
         }
         if (converted > Integer.MAX_VALUE) {

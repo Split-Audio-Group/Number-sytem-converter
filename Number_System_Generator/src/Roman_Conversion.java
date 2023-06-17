@@ -1,7 +1,5 @@
 package src;
 
-import java.util.Arrays;
-
 public class Roman_Conversion {
     public static char[] ROMAN_DICTIONARY = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
     private static int[] ROMAN_VALUE = { 1, 5, 10, 50, 100, 500, 1000 };
@@ -76,8 +74,8 @@ public class Roman_Conversion {
             if (number == 0) {
                 break;
             }
-            // System.out.println("Number: " + number);
-            // System.out.println("Return: " + returnString);
+            System.out.println("Number: " + number);
+            System.out.println("Return: " + returnString);
         }
         return returnString;
     }
