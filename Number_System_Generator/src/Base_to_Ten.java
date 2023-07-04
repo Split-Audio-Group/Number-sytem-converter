@@ -78,7 +78,7 @@ public class Base_to_Ten {
         int converted = 0;
         int value = 0;
         String convertable;
-        System.out.println(number);
+        // System.out.println(number);
 
         if (base == 0) {
             number = Roman_Conversion.optimizeRoman(number);
@@ -106,16 +106,16 @@ public class Base_to_Ten {
                     }
                 }
                 int maxDist = Integer.MAX_VALUE - converted;
-                if (maxDist <= ((int) Math.pow((double) base, (double) i) * value)) {
+                if (maxDist <= ((int) Math.pow((double) base, (double) (number.length() - 1 - i)) * value)) {
                     converted = Integer.MAX_VALUE;
 
                     break;
                 }
-                converted += ((int) Math.pow((double) base, (double) i) * value);
+                converted += ((int) Math.pow((double) base, (double) (number.length() - 1 - i)) * value);
                 // System.out.println("Converted = " + converted);
             }
         }
-        if (converted > Integer.MAX_VALUE) {
+        if (converted >= Integer.MAX_VALUE) {
             System.out.println("This number is too large to convert");
         }
         if (converted < Integer.MAX_VALUE) {
